@@ -1,0 +1,88 @@
+* {
+  position: relative;
+}
+.img-60 {
+  width: 60px;
+  height: auto;
+}
+
+.profile-edit svg {
+  position: relative;
+  top: -20px;
+  left: 12px;
+  stroke: transparent;
+  height: 22px;
+  width: 22px;
+  vertical-align: baseline;
+  border-radius: 50%;
+}
+
+.profile-edit svg:hover {
+  background-color: #fff;
+  stroke: currentColor;
+  padding: 4px;
+}
+
+.time-date,
+.quickLink {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.text-darkblue {
+  color: #2f3c4e;
+}
+
+.quickLink:hover {
+  text-decoration: none;
+}
+
+#top-nav {
+  right: 0;
+  z-index: 1;
+}
+
+.body-content {
+  margin-top: 80px;
+}
+
+.min-height-90 {
+  min-height: 90vh;
+}
+
+.cur-location {
+  font-size: 0.85rem;
+}
+
+.active-tab {
+  font-weight: bold;
+  color: black;
+}
+
+.svg-fa-fw {
+  fill: rgba(255, 255, 255, 0.3);
+}
+
+.nav-link:hover .svg-fa-fw {
+  fill: #fff;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+.editpro {
+  margin-top: 24px;
+}
+
+.add-product {
+  border: 1px solid #d1d3e2;
+  border-radius: 10px;
+  padding: 20px;
+}

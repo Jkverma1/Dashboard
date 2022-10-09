@@ -1,0 +1,72 @@
+.category-container {
+  padding: 0 10px;
+}
+
+.main-section {
+  padding: 15px;
+  font-style: normal;
+  background: #ffffff;
+  box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.25);
+  margin-bottom: 20px;
+}
+
+.coupon-category-container {
+  padding-left: 40px;
+  height: fit-content;
+}
+
+.add-attribute-container {
+  height: fit-content;
+  width: fit-content;
+}
+
+.custom-file-control::after {
+  content: "Choose file...";
+}
+.custom-file-control::before {
+  content: "Browse";
+}
+
+.btn-category-outline-info {
+  border-color: #2f3c4e;
+  color: #2f3c4e;
+}
+
+.btn-category-outline-info:hover {
+  background-color: #2f3c4e;
+  color: #fff;
+}
+
+.text-inverse {
+  color: black;
+}
+
+.category-type {
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d1d3e2;
+  height: 45px;
+}
+
+.category-tab {
+  border: none;
+  padding: 9.8px;
+  background-color: transparent;
+}
+
+.category-tab a:hover {
+  text-decoration: none;
+}
+
+.active-category-tab {
+  border: 1px solid #d1d3e2;
+  padding: 9.8px;
+  background-color: #fff;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.product-container .nav-tabs {
+  margin: 10px 25px 20px;
+}

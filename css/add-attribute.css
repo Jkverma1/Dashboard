@@ -1,0 +1,41 @@
+.attributes-container {
+  min-height: 100vh;
+  width: inherit;
+  background: #fff;
+  margin: 0 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.add-attribute-form {
+  margin-top: 20px;
+  border: 1px solid #d1d3e2;
+  border-radius: 5px;
+  height: fit-content;
+  padding: 20px 10px;
+}
+.add-attribute-form label {
+  color: black;
+}
+
+.attribute-group-input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #d1d3e2;
+  border-radius: 5px;
+}
+
+.add-attribute-div {
+  margin: 50px 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #f8f9fc;
+}
+
+.add-attribute-input {
+  border: 1px solid #d1d3e2;
+  width: 50%;
+  border-radius: 5px;
+}

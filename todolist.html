@@ -1,0 +1,375 @@
+
+
+
+
+<div class="col-xl-4 mb-4 ">
+    <div class="to-do-list">
+        <div class="todo-task-input">
+        <ion-icon name="create-outline"></ion-icon>
+        <input type="text" placeholder="Add a New Task + Enter" />
+        </div>
+        <div class="todo-controls">
+        <div class="todo-filters">
+        <span class="active" id="all">All</span>
+        <span id="pending">Pending</span>
+        <span id="completed">Completed</span>
+        </div>
+        <button class="todo-clear-btn">Clear All</button>
+        </div>
+        <ul class="todo-task-box"></ul>
+        </div>
+  </div>
+
+  <style>
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    }
+    
+    .to-do-list {
+    max-width: 405px;
+    background: #fff;
+    border-radius: 7px;
+    padding: 28px 0 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .todo-task-input {
+    position: relative;
+    height: 52px;
+    padding: 0 25px;
+    }
+    
+    .todo-task-input ion-icon {
+    position: absolute;
+    top: 50%;
+    color: #999;
+    font-size: 25px;
+    transform: translate(17px, -50%);
+    }
+    
+    .todo-task-input input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 0 20px 0 53px;
+    border: 1px solid #999;
+    }
+    
+    .todo-task-input input:focus,
+    .todo-task-input input.active {
+    padding-left: 52px;
+    border: 2px solid #2f3c4e;
+    }
+    
+    .todo-task-input input::placeholder {
+    color: #bfbfbf;
+    }
+    
+    .todo-controls,
+    .to-do-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+    
+    .todo-controls {
+    padding: 18px 25px;
+    border-bottom: 1px solid #ccc;
+    }
+    
+    .todo-filters span {
+    margin: 0 8px;
+    font-size: 17px;
+    color: #444444;
+    cursor: pointer;
+    }
+    
+    .todo-filters span:first-child {
+    margin-left: 0;
+    }
+    
+    .todo-filters span.active {
+    color: #2f3c4e;
+    font-weight: 600;
+    }
+    
+    .todo-clear-btn {
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 7px 13px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+    pointer-events: none;
+    transition: transform 0.25s ease;
+    background: #2f3c4e;
+    }
+    
+    .todo-clear-btn.active {
+    pointer-events: auto;
+    }
+    
+    .todo-clear-btn:active {
+    transform: scale(0.93);
+    }
+    
+    .todo-task-box {
+    margin-top: 20px;
+    margin-right: 5px;
+    padding: 0 20px 10px 25px;
+    }
+    
+    .todo-task-box.overflow {
+    overflow-y: auto;
+    max-height: 300px;
+    }
+    
+    .todo-task-box::-webkit-scrollbar {
+    width: 5px;
+    }
+    
+    .todo-task-box::-webkit-scrollbar-track {
+    background: #f12711;
+    border-radius: 25px;
+    }
+    
+    .todo-task-box::-webkit-scrollbar-thumb {
+    background: #e6e6e6;
+    border-radius: 25px;
+    }
+    
+    .todo-task-box .task {
+    list-style: none;
+    font-size: 17px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    align-items: flex-start;
+    border-bottom: 1px solid #ccc;
+    }
+    
+    .todo-task-box .task:last-child {
+    margin-bottom: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+    }
+    
+    .todo-task-box .task label {
+    display: flex;
+    align-items: flex-start;
+    }
+    
+    .task label input {
+    margin-top: 7px;
+    accent-color: #f12711;
+    }
+    
+    .task label p {
+    user-select: none;
+    margin-left: 12px;
+    word-wrap: break-word;
+    }
+    
+    .task label p.checked {
+    text-decoration: line-through;
+    }
+    
+    .todo-task-box .settings {
+    position: relative;
+    }
+    
+    .settings :where(i, li) {
+    cursor: pointer;
+    }
+    
+    .settings .task-menu {
+    position: absolute;
+    right: -5px;
+    bottom: -65px;
+    padding: 5px 0;
+    background: #fff;
+    border-radius: 4px;
+    transform: scale(0);
+    transform-origin: top right;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+    z-index: 10;
+    }
+    
+    .todo-task-box .task:last-child .task-menu {
+    bottom: 0;
+    transform-origin: bottom right;
+    }
+    
+    .todo-task-box .task:first-child .task-menu {
+    bottom: -65px;
+    transform-origin: top right;
+    }
+    
+    .task-menu.show {
+    transform: scale(1);
+    }
+    
+    .task-menu li {
+    height: 25px;
+    font-size: 16px;
+    margin-bottom: 2px;
+    padding: 17px 15px;
+    cursor: pointer;
+    justify-content: flex-start;
+    }
+    
+    .task-menu li:last-child {
+    margin-bottom: 0;
+    }
+    
+    .settings li:hover {
+    background: #f5f5f5;
+    }
+    
+    .settings li i {
+    padding-right: 8px;
+    }
+    
+  </style>
+
+  <script>
+    
+const taskInput = document.querySelector(".todo-task-input input"),
+filters = document.querySelectorAll(".todo-filters span"),
+clearAll = document.querySelector(".todo-clear-btn"),
+taskBox = document.querySelector(".todo-task-box");
+
+let editId,
+isEditTask = false,
+todos = JSON.parse(localStorage.getItem("todo-list"));
+
+filters.forEach((btn) => {
+btn.addEventListener("click", () => {
+document.querySelector("span.active").classList.remove("active");
+btn.classList.add("active");
+showTodo(btn.id);
+});
+});
+
+showTodo("all");
+
+function showTodo(filter) {
+let liTag = "";
+if (todos) {
+todos.forEach((todo, id) => {
+let completed = todo.status == "completed" ? "checked" : "";
+if (filter == todo.status || filter == "all") {
+liTag += `<li class="task">
+<label for="${id}">
+<input onclick="updateStatus(this)" type="checkbox" id="${id}" ${completed}>
+<p class="${completed}">${todo.name}</p>
+</label>
+<div class="settings">
+<i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
+<ul class="task-menu">
+<li onclick='editTask(${id}, "${todo.name}")'><i class="uil uil-pen"></i>Edit</li>
+<li onclick='deleteTask(${id}, "${filter}")'><i class="uil uil-trash"></i>Delete</li>
+</ul>
+</div>
+</li>`;
+}
+});
+}
+taskBox.innerHTML = liTag || `<span>You don't have any task here</span>`;
+let checkTask = taskBox.querySelectorAll(".task");
+!checkTask.length
+? clearAll.classList.remove("active")
+: clearAll.classList.add("active");
+taskBox.offsetHeight >= 300
+? taskBox.classList.add("overflow")
+: taskBox.classList.remove("overflow");
+}
+
+function showMenu(selectedTask) {
+let menuDiv = selectedTask.parentElement.lastElementChild;
+menuDiv.classList.add("show");
+document.addEventListener("click", (e) => {
+if (e.target.tagName != "I" || e.target != selectedTask) {
+menuDiv.classList.remove("show");
+}
+});
+}
+
+function updateStatus(selectedTask) {
+let taskName = selectedTask.parentElement.lastElementChild;
+if (selectedTask.checked) {
+taskName.classList.add("checked");
+todos[selectedTask.id].status = "completed";
+} else {
+taskName.classList.remove("checked");
+todos[selectedTask.id].status = "pending";
+}
+localStorage.setItem("todo-list", JSON.stringify(todos));
+}
+
+function editTask(taskId, textName) {
+editId = taskId;
+isEditTask = true;
+taskInput.value = textName;
+taskInput.focus();
+taskInput.classList.add("active");
+}
+
+function deleteTask(deleteId, filter) {
+isEditTask = false;
+todos.splice(deleteId, 1);
+localStorage.setItem("todo-list", JSON.stringify(todos));
+showTodo(filter);
+}
+
+clearAll.addEventListener("click", () => {
+isEditTask = false;
+todos.splice(0, todos.length);
+localStorage.setItem("todo-list", JSON.stringify(todos));
+showTodo();
+});
+
+taskInput.addEventListener("keyup", (e) => {
+let userTask = taskInput.value.trim();
+if (e.key == "Enter" && userTask) {
+if (!isEditTask) {
+todos = !todos ? [] : todos;
+let taskInfo = { name: userTask, status: "pending" };
+todos.push(taskInfo);
+} else {
+isEditTask = false;
+todos[editId].name = userTask;
+}
+taskInput.value = "";
+localStorage.setItem("todo-list", JSON.stringify(todos));
+showTodo(document.querySelector("span.active").id);
+}
+});x
+  </script>
+
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div
+    id="page-title"
+    class="d-sm-flex align-items-center justify-content-between mb-4"
+  >
+    <h1 class="h3 mb-0 text-gray-800 Dashboard">Edit Product<br><span class="cur-location">Catalog | [Category] | [Type] | <span class="active-tab">Edit Product</span></span></h1>
+    <div>
+      <a href="catalog.html" class="d-none d-sm-inline-block btn btn-md btn-primary shadow-sm">
+          <i class="fa fa-arrow-left fa-sm text-white-100" aria-hidden="true"></i> Back</a>
+      <a href="catalog.html" class="d-none d-sm-inline-block btn btn-md btn-danger shadow-sm">
+          <i class="fa fa-trash fa-sm text-white-100" aria-hidden="true"></i> Delete</a>
+      <a href="catalog.html" class="d-none d-sm-inline-block btn btn-md btn-primary shadow-sm">
+        <i class="fa fa-link fa-sm text-white-100" aria-hidden="true"></i> Copy Link</a>
+    </div>
+  </div>
+</div>

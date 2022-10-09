@@ -1,0 +1,15 @@
+.add-addresses {
+  padding: 0 20px;
+}
+
+.address-container {
+  margin-top: 20px;
+}
+
+.address-details span {
+  display: block;
+}
+
+.address-btn-container {
+  margin-top: 10px;
+}

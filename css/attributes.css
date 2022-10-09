@@ -1,0 +1,30 @@
+.attributes-container {
+  min-height: 100vh;
+  width: inherit;
+  background: #fff;
+  margin: 0 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.thead-container {
+  background-color: #f8f9fc;
+}
+
+.thead-title {
+  width: fit-content;
+  color: black;
+}
+
+.table-content td {
+  wra
+  flex-wrap: nowrap;
+}
+
+.table-content td,
+.table-content th {
+  height: inherit;
+  vertical-align: middle;
+  align-items: center;
+}
